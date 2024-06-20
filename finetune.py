@@ -48,6 +48,8 @@ dataset = load_dataset("316usman/pubmedqa_train_cleaned", split="train")
 def formatting_prompts_func(examples):
     texts = []
     for example in examples:
+        # Parse the example as JSON
+        example = json.loads(example)
         # Concatenate the QUESTION and CONTEXT fields to create the user's input
         user_input = example["data"]["QUESTION"] + " " + example["data"]["CONTEXT"]
         # Use the LONG_ANSWER field as the assistant's response
