@@ -46,7 +46,7 @@ dataset = load_dataset("316usman/pubmedqa_train_cleaned", split="train")
 # I see, in that case, we can modify the function to return a dictionary with a single field text that contains a string representation of the formatted example. Here's an updated version of the function:
 
 def formatting_prompts_func(example):
-    print (example)
+
     # Concatenate the QUESTION and CONTEXT fields to create the user's input
     user_input = example["QUESTION"] + " " + example["CONTEXT"]
     # Use the LONG_ANSWER field as the assistant's response
