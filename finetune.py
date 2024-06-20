@@ -22,7 +22,8 @@
 # microsoft/Phi-3-medium-128k-instruct-onnx-directml
 # microsoft/Phi-3-mini-4k-instruct-gguf
 
-from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, SFTTrainer
+from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
+from trl import SFTTrainer
 from datasets import load_dataset
 # Load the pre-trained model and tokenizer
 model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct', torch_dtype=torch.float16)
