@@ -67,7 +67,7 @@ args = TrainingArguments(
     num_train_epochs=3,
     save_strategy="epoch",
     logging_steps=10,
-    output_dir=NEW_MODEL_NAME,
+    output_dir='finetuned_model',
     optim="paged_adamw_32bit",
     lr_scheduler_type="linear"
 )
