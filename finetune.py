@@ -21,7 +21,7 @@
 # microsoft/Phi-3-medium-128k-instruct-onnx-cuda
 # microsoft/Phi-3-medium-128k-instruct-onnx-directml
 # microsoft/Phi-3-mini-4k-instruct-gguf
-
+import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 from trl import SFTTrainer
 from datasets import load_dataset
