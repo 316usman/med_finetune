@@ -23,8 +23,8 @@
 # microsoft/Phi-3-mini-4k-instruct-gguf
 
 # Load the pre-trained model and tokenizer
-model = AutoModelForCausalLM.from_pretrained('Model_Name', torch_dtype=torch.float16)
-tokenizer = AutoTokenizer.from_pretrained('Mode_Name')
+model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct', torch_dtype=torch.float16)
+tokenizer = AutoTokenizer.from_pretrained('microsoft/Phi-3-mini-4k-instruct')
 
 # Load the dataset for fine-tuning
 dataset = load_dataset("316usman/pubmedqa_train_cleaned", split="train")
