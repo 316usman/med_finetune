@@ -27,7 +27,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 from trl import SFTTrainer
 from datasets import load_dataset
 # Load the pre-trained model and tokenizer
-model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct',load_in_8bit=True)
+model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct', torch.dtype=torch.bfloat16)
 tokenizer = AutoTokenizer.from_pretrained('microsoft/Phi-3-mini-4k-instruct')
 
 # Load the dataset for fine-tuning
