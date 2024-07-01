@@ -59,35 +59,35 @@ def formatting_prompts_func(example):
     return {"text": texts}
 
 # Apply the formatting function to the dataset
-dataset1 = dataset.map(formatting_prompts_func, batched=False)
-print (dataset1[20000])
+#dataset1 = dataset.map(formatting_prompts_func, batched=False)
+#print (dataset1[20000])
 # Define the training arguments
-# args = TrainingArguments(
-#     evaluation_strategy="steps",
-#     per_device_train_batch_size=7,
-#     gradient_accumulation_steps=4,
-#     gradient_checkpointing=True,
-#     learning_rate=1e-4,
-#     fp16=True,
-#     max_steps=-1,
-#     num_train_epochs=1,
-#     save_strategy="epoch",
-#     logging_steps=10,
-#     output_dir='finetuned_model',
-#     optim="paged_adamw_32bit",
-#     lr_scheduler_type="linear"
-# )
+args = TrainingArguments(
+    evaluation_strategy="steps",
+    per_device_train_batch_size=7,
+    gradient_accumulation_steps=4,
+    gradient_checkpointing=True,
+    learning_rate=1e-4,
+    fp16=True,
+    max_steps=-1,
+    num_train_epochs=1,
+    save_strategy="epoch",
+    logging_steps=10,
+    output_dir='finetuned_model',
+    optim="paged_adamw_32bit",
+    lr_scheduler_type="linear"
+)
 
-# # Create the trainer
-# trainer = SFTTrainer(
-#     model=model,
-#     args=args,
-#     train_dataset=dataset,
-#     dataset_text_field="text",
-#     max_seq_length=128,
-#     formatting_func=formatting_prompts_func,
-#     tokenizer = tokenizer
-# )
+# Create the trainer
+trainer = SFTTrainer(
+    model=model,
+    args=args,
+    train_dataset=dataset,
+    dataset_text_field="text",
+    max_seq_length=128,
+    formatting_func=formatting_prompts_func,
+    tokenizer = tokenizer
+)
 
 # # Start the training process
 # trainer.train()
