@@ -76,7 +76,7 @@ def formatting_prompts_func(example):
 # print (dataset1[20000])
 # Define the training arguments
 args = TrainingArguments(
-    evaluation_strategy="steps",
+    evaluation_strategy="no",
     per_device_train_batch_size=7,
     gradient_accumulation_steps=4,
     gradient_checkpointing=True,
@@ -89,7 +89,6 @@ args = TrainingArguments(
     output_dir='finetuned_model',
     optim="paged_adamw_32bit",
     lr_scheduler_type="linear",
-    evaluation_strategy="no",
     do_eval=False
 )
 
