@@ -31,7 +31,7 @@ model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct',
 tokenizer = AutoTokenizer.from_pretrained('microsoft/Phi-3-mini-4k-instruct')
 
 # Load the dataset for fine-tuning
-dataset = load_dataset("316usman/pubmedqa_train_cleaned", split="train")
+dataset = load_dataset("316usman/pubmedqa_train_cleaned_1", split="train")
 
 # # Define the formatting function for the prompts
 # def formatting_prompts_func(examples):
@@ -60,7 +60,7 @@ def formatting_prompts_func(example):
     return {"prompt": user_input, "completion": assistant_response}
 
 # Apply the formatting function to the dataset
-dataset1 = dataset.map(formatting_prompts_func, batched=False)
+# dataset1 = dataset.map(formatting_prompts_func, batched=False)
 # print (dataset1[20000])
 # Define the training arguments
 args = TrainingArguments(
@@ -83,9 +83,8 @@ args = TrainingArguments(
 trainer = SFTTrainer(
     model=model,
     args=args,
-    train_dataset=dataset1,
+    train_dataset=dataset,
     max_seq_length=128,
-    formatting_func=formatting_prompts_func,
 )
 
 # # Start the training process
