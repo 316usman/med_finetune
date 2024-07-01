@@ -40,7 +40,7 @@ config = LoraConfig(
     task_type="CAUSAL_LM",
 )
 
-model = prepare_model_for_int8_training(model)
+model = prepare_model_for_kbit_training(model)
 model = get_peft_model(model, config)
 # Load the dataset for fine-tuning
 dataset = load_dataset("316usman/pubmedqa_train_cleaned_1", split="train")
