@@ -26,7 +26,7 @@ import json
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 from trl import SFTTrainer
 from datasets import load_dataset
-from peft import LoraConfig, get_peft_model, prepare_model_for_int8_training
+from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 # Load the pre-trained model and tokenizer
 model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct', load_in_8bit=True)
 tokenizer = AutoTokenizer.from_pretrained('microsoft/Phi-3-mini-4k-instruct')
