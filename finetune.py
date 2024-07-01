@@ -48,7 +48,7 @@ dataset = load_dataset("316usman/pubmedqa_train_cleaned", split="train")
 
 def formatting_prompts_func(example):
     texts=[]
-    print (example)
+
     user_input = example["data"]["QUESTION"] + " " + example["data"]["CONTEXT"]
     # Use the LONG_ANSWER field as the assistant's response
     assistant_response = example["data"]["LONG_ANSWER"]
