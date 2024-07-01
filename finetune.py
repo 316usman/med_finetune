@@ -85,7 +85,8 @@ trainer = SFTTrainer(
     train_dataset=dataset,
     dataset_text_field="text",
     max_seq_length=128,
-    formatting_func=formatting_prompts_func
+    formatting_func=formatting_prompts_func,
+    tokenizer = tokenizer
 )
 
 # Start the training process
