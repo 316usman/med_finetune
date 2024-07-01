@@ -97,7 +97,6 @@ trainer = SFTTrainer(
     model=model,
     args=args,
     train_dataset=dataset,
-    max_seq_length=128,
 )
 
 # # Start the training process
