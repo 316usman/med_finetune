@@ -59,8 +59,8 @@ def formatting_prompts_func(example):
     return {"text": texts}
 
 # Apply the formatting function to the dataset
-#dataset1 = dataset.map(formatting_prompts_func, batched=False)
-#print (dataset1[20000])
+#dataset1 = dataset.map(formatting_prompts_func, batched=False, , remove_columns=["data"])
+print (dataset1[20000])
 # Define the training arguments
 args = TrainingArguments(
     evaluation_strategy="steps",
@@ -82,7 +82,7 @@ args = TrainingArguments(
 trainer = SFTTrainer(
     model=model,
     args=args,
-    train_dataset=dataset,
+    train_dataset=dataset1,
     dataset_text_field="text",
     max_seq_length=128,
     formatting_func=formatting_prompts_func,
