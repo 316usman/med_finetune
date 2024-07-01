@@ -88,7 +88,9 @@ args = TrainingArguments(
     logging_steps=10,
     output_dir='finetuned_model',
     optim="paged_adamw_32bit",
-    lr_scheduler_type="linear"
+    lr_scheduler_type="linear",
+    evaluation_strategy="no",
+    do_eval=False
 )
 
 # Create the trainer
