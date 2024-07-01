@@ -56,7 +56,7 @@ def formatting_prompts_func(example):
     # Append the formatted example to the list
     texts.append(formatted_example)
     # Return a dictionary with the formatted examples
-    return {"text": texts}
+    return {"prompt": user_input, "completion": assistant_response}
 
 # Apply the formatting function to the dataset
 #dataset1 = dataset.map(formatting_prompts_func, batched=False, remove_columns=["data"])
@@ -83,10 +83,8 @@ trainer = SFTTrainer(
     model=model,
     args=args,
     train_dataset=dataset,
-    dataset_text_field="text",
     max_seq_length=128,
     formatting_func=formatting_prompts_func,
-    tokenizer = tokenizer
 )
 
 # # Start the training process
