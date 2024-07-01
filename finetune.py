@@ -26,10 +26,22 @@ import json
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 from trl import SFTTrainer
 from datasets import load_dataset
+from peft import LoraConfig, get_peft_model, prepare_model_for_int8_training
 # Load the pre-trained model and tokenizer
-model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct', torch_dtype=torch.float16)
+model = AutoModelForCausalLM.from_pretrained('microsoft/Phi-3-mini-4k-instruct', load_in_8bit=True)
 tokenizer = AutoTokenizer.from_pretrained('microsoft/Phi-3-mini-4k-instruct')
 
+config = LoraConfig(
+    r=16,
+    lora_alpha=32,
+    target_modules=["q_proj", "v_proj"],
+    lora_dropout=0.05,
+    bias="none",
+    task_type="CAUSAL_LM",
+)
+
+model = prepare_model_for_int8_training(model)
+model = get_peft_model(model, config)
 # Load the dataset for fine-tuning
 dataset = load_dataset("316usman/pubmedqa_train_cleaned_1", split="train")
 
