@@ -90,4 +90,4 @@ trainer = SFTTrainer(
 )
 
 # # Start the training process
-# trainer.train()
+trainer.train()
