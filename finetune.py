@@ -60,7 +60,7 @@ def formatting_prompts_func(example):
 
 # Apply the formatting function to the dataset
 dataset1 = dataset.map(formatting_prompts_func, batched=False)
-print (dataset1[20000]['text'])
+print (dataset1[20000])
 # Define the training arguments
 # args = TrainingArguments(
 #     evaluation_strategy="steps",
